@@ -47,7 +47,7 @@ jobs:
         directory: libapps/hterm/dist/js/
         # Directory that contains the minified files.
         output: .
-        js_engine: uglify-js
+        js_engine: babel
 
     - uses: actions/upload-artifact@v2
       with:
