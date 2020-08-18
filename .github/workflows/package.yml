@@ -1,4 +1,4 @@
-name: CI
+name: package-hterm
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
@@ -20,8 +20,7 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
       with:
-        name: https://chromium.googlesource.com/apps/libapps
-        ref: refs/heads/master
+        repository: https://chromium.googlesource.com/apps/libapps
 
     # Runs a single command using the runners shell
     - name: Run a one-line script
