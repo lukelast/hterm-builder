@@ -39,3 +39,17 @@ jobs:
       with:
         name: Upload hterm_all
         path: libapps/hterm/dist/js/hterm_all.js
+
+    - name: Auto Minify
+      uses: nizarmah/auto-minify@v1.9
+      with:
+        # Directory that contains the files you want to minify. Defaults to current directory (.)
+        directory: libapps/hterm/dist/js/
+        # Directory that contains the minified files.
+        output: .
+        js_engine: uglify-js
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: Upload hterm_all.min
+        path: hterm_all.min.js
