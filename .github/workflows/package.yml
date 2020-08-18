@@ -38,7 +38,9 @@ jobs:
 
     - name: Concat JS files to hterm_all.js
       run: |
-        cd libapps/hterm
+        cd libapps
+        git log -n 10 --oneline hterm
+        cd hterm
         ./bin/mkdist
 
     - name: Minify JS
