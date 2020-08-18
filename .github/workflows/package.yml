@@ -33,8 +33,11 @@ jobs:
     - name: Install terser
       run: npm install terser -g
 
+    # a3898327 is the last version before const/let replaces var.
     - name: Clone hterm
-      run: git clone https://chromium.googlesource.com/apps/libapps
+      run: |
+        git clone https://chromium.googlesource.com/apps/libapps
+        git checkout  a3898327
 
     - name: Concat JS files to hterm_all.js
       run: |
