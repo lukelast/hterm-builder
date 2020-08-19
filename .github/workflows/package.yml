@@ -33,11 +33,12 @@ jobs:
     - name: Install terser
       run: npm install terser -g
 
+    # Old working tag: hterm-1.84
     - name: Clone hterm
       run: |
         git clone https://chromium.googlesource.com/apps/libapps
         cd libapps
-        git checkout hterm-1.84
+        git checkout master
 
     - name: Concat JS files to hterm_all.js
       run: |
@@ -46,10 +47,24 @@ jobs:
         cd hterm
         ./bin/mkdist*
 
+    - name: Replace const lib with var.
+      uses: jacobtomlinson/gha-find-replace@master
+      with:
+        find: "const lib = {};"
+        replace: "var lib = {};"
+        include: "hterm_all.js"
+
+    - name: Replace const hterm with var.
+      uses: jacobtomlinson/gha-find-replace@master
+      with:
+        find: "const hterm = {};"
+        replace: "var hterm = {};"
+        include: "hterm_all.js"
+
     - name: Minify JS
       run: |
         cd libapps/hterm/dist/js/
-        terser --compress --mangle -- hterm_all.js > hterm_all.min.js
+        terser --compress --mangle --comments `false` -- hterm_all.js > hterm_all.min.js
 
     - uses: actions/upload-artifact@v2
       with:
