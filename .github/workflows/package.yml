@@ -39,7 +39,7 @@ jobs:
         git clone https://chromium.googlesource.com/apps/libapps
         cd libapps
         git checkout a3898327
-        cd libapps/hterm/js
+        cd hterm/js
         cat hterm.js
 
     - name: Concat JS files to hterm_all.js
