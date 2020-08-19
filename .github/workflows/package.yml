@@ -44,7 +44,7 @@ jobs:
         cd libapps
         git log -n 10 --oneline hterm
         cd hterm
-        ./bin/mkdist
+        ./bin/mkdist*
 
     - name: Minify JS
       run: |
