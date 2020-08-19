@@ -48,11 +48,13 @@ jobs:
         git log -n 10 --oneline hterm
         cd hterm
         ./bin/mkdist
+        cat js/hterm.js
 
     - name: Minify JS
       run: |
         cd libapps/hterm/dist/js/
         terser --compress --mangle -- hterm_all.js > hterm_all.min.js
+        cat hterm.js
 
     - uses: actions/upload-artifact@v2
       with:
