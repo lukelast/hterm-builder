@@ -34,12 +34,12 @@ jobs:
     - name: Install terser
       run: npm install terser -g
 
-    # Old working tag: hterm-1.84
     - name: Clone hterm
       run: |
         git clone https://chromium.googlesource.com/apps/libapps
         cd libapps
-        git checkout master
+        # Tue Dec 29 2020
+        git checkout 71452719967c3930a4cf5b15335e2bc42b7206ae
 
     - name: Concat JS files to hterm_all.js
       run: |
